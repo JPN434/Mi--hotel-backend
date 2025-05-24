@@ -1,6 +1,5 @@
 require('dotenv').config();
 const express = require('express');
-const serverless = require('serverless-http'); // ✅ necesario para Vercel
 const sequelize = require('./config/database');
 const usuarioRouters = require('./Routers/usarioRouters');
 const cors = require('cors');
@@ -11,22 +10,19 @@ const authenticateToken = require('./middleware/authenticateToken');
 
 const app = express();
 
-// Middleware CORS
-app.use(
-    cors({
-        origin: [
-            'http://localhost:3000',
-            'http://localhost:3001',
-            'https://my-hotel-six.vercel.app'
-        ],
-        methods: ['GET', 'POST', 'PUT', 'DELETE'],
-        credentials: true,
-    })
-);
+app.use(cors({
+    origin: [
+        'http://localhost:3000',
+        'http://localhost:3001',
+        'https://my-hotel-six.vercel.app'
+    ],
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    credentials: true,
+}));
 
 app.use(express.json());
 
-// Sincronizar base de datos
+// Base de datos
 sequelize.sync();
 
 // Rutas
@@ -35,9 +31,11 @@ app.use('/api/hoteles', authenticateToken, hotelRouters);
 app.use('/api/municipios', municipioRouters);
 app.use('/api/habitaciones', authenticateToken, habitacionRouters);
 
+// Iniciar servidor
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`Servidor corriendo en el puerto ${PORT}`);
+});
 
-
-module.exports = app;
-module.exports.handler = serverless(app);
 
 
