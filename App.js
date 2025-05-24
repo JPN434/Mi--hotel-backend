@@ -10,7 +10,7 @@ const path = require('path');
 
 console.log('App.js __dirname:', __dirname);
 
-const authenticateToken = require(path.resolve(__dirname, 'middleware/authenticateToken'));
+const authenticateToken = require(path.resolve(__dirname, 'api/middleware/authenticateToken'));
 
 console.log('Middleware cargado');
 
