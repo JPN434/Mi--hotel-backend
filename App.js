@@ -6,7 +6,13 @@ const cors = require('cors');
 const hotelRouters = require('./Routers/hotelRouters');
 const municipioRouters = require('./Routers/municipioRoutes');
 const habitacionRouters = require('./Routers/habitacionRouters');
-const authenticateToken = require('./middleware/authenticateToken');
+const path = require('path');
+
+console.log('App.js __dirname:', __dirname);
+
+const authenticateToken = require(path.resolve(__dirname, 'middleware/authenticateToken'));
+
+console.log('Middleware cargado');
 
 const app = express();
 
@@ -36,6 +42,7 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Servidor corriendo en el puerto ${PORT}`);
 });
+
 
 
 
