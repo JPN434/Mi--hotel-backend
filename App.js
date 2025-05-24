@@ -6,13 +6,7 @@ const cors = require('cors');
 const hotelRouters = require('./Routers/hotelRouters');
 const municipioRouters = require('./Routers/municipioRoutes');
 const habitacionRouters = require('./Routers/habitacionRouters');
-const path = require('path');
-
-console.log('App.js __dirname:', __dirname);
-
-const authenticateToken = require(path.resolve(__dirname, 'api/middleware/authenticateToken'));
-
-console.log('Middleware cargado');
+const authenticateToken = require('./middleware/authenticateToken');
 
 const app = express();
 
