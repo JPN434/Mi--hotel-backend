@@ -6,7 +6,7 @@ const cors = require('cors');
 const hotelRouters = require('./Routers/hotelRouters');
 const municipioRouters = require('./Routers/municipioRoutes');
 const habitacionRouters = require('./Routers/habitacionRouters');
-const authenticateToken = require('../api/middleware/authenticateToken');
+const authenticateToken = require('./api/middleware/authenticateToken');
 
 const app = express();
 
