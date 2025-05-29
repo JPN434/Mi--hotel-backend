@@ -6,7 +6,7 @@ const cors = require('cors');
 const hotelRouters = require('./Routers/hotelRouters');
 const municipioRouters = require('./Routers/municipioRoutes');
 const habitacionRouters = require('./Routers/habitacionRouters');
-const authenticateToken = require('./middleware/authenticateToken')
+const authenticateToken = require('../api/middleware/authenticateToken');
 
 const app = express();
 
@@ -36,6 +36,7 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Servidor corriendo en el puerto ${PORT}`);
 });
+
 
 
 
